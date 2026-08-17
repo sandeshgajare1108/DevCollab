@@ -8,150 +8,107 @@ import javax.persistence.*;
 @Table(name = "code_reviews")
 public class CodeReviewEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "code_review_id")
-    private Long codeReviewId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "code_review_id")
+	private Long codeReviewId;
 
+	@Column(name = "pull_request_id", nullable = false)
+	private Long pullRequestId;
 
-    @Column(name = "pull_request_id", nullable = false)
-    private Long pullRequestId;
+	@Column(name = "project_id", nullable = false)
+	private Long projectId;
 
+	@Column(name = "task_id")
+	private Long taskId;
 
-    @Column(name = "project_id", nullable = false)
-    private Long projectId;
+	@Column(name = "reviewer_id", nullable = false)
+	private Long reviewerId;
 
+	@Column(name = "review_comment", columnDefinition = "TEXT")
+	private String reviewComment;
 
-    @Column(name = "task_id")
-    private Long taskId;
+	@Column(name = "decision", nullable = false, length = 40)
+	private String decision;
 
+	@Column(name = "created_at")
+	private Timestamp createdAt;
 
-    @Column(name = "reviewer_id", nullable = false)
-    private Long reviewerId;
+	@Column(name = "updated_at")
+	private Timestamp updatedAt;
 
+	public CodeReviewEntity() {
+	}
 
-    @Column(
-        name = "review_comment",
-        columnDefinition = "TEXT"
-    )
-    private String reviewComment;
+	public Long getCodeReviewId() {
+		return codeReviewId;
+	}
 
+	public void setCodeReviewId(Long codeReviewId) {
+		this.codeReviewId = codeReviewId;
+	}
 
-    @Column(
-        name = "decision",
-        nullable = false,
-        length = 40
-    )
-    private String decision;
+	public Long getPullRequestId() {
+		return pullRequestId;
+	}
 
+	public void setPullRequestId(Long pullRequestId) {
+		this.pullRequestId = pullRequestId;
+	}
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
+	public Long getProjectId() {
+		return projectId;
+	}
 
+	public void setProjectId(Long projectId) {
+		this.projectId = projectId;
+	}
 
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
+	public Long getTaskId() {
+		return taskId;
+	}
 
+	public void setTaskId(Long taskId) {
+		this.taskId = taskId;
+	}
 
-    public CodeReviewEntity() {
-    }
+	public Long getReviewerId() {
+		return reviewerId;
+	}
 
+	public void setReviewerId(Long reviewerId) {
+		this.reviewerId = reviewerId;
+	}
 
-    public Long getCodeReviewId() {
-        return codeReviewId;
-    }
+	public String getReviewComment() {
+		return reviewComment;
+	}
 
-    public void setCodeReviewId(
-            Long codeReviewId) {
-        this.codeReviewId =
-                codeReviewId;
-    }
+	public void setReviewComment(String reviewComment) {
+		this.reviewComment = reviewComment;
+	}
 
+	public String getDecision() {
+		return decision;
+	}
 
-    public Long getPullRequestId() {
-        return pullRequestId;
-    }
+	public void setDecision(String decision) {
+		this.decision = decision;
+	}
 
-    public void setPullRequestId(
-            Long pullRequestId) {
-        this.pullRequestId =
-                pullRequestId;
-    }
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
 
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
 
-    public Long getProjectId() {
-        return projectId;
-    }
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
 
-    public void setProjectId(
-            Long projectId) {
-        this.projectId =
-                projectId;
-    }
-
-
-    public Long getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(
-            Long taskId) {
-        this.taskId =
-                taskId;
-    }
-
-
-    public Long getReviewerId() {
-        return reviewerId;
-    }
-
-    public void setReviewerId(
-            Long reviewerId) {
-        this.reviewerId =
-                reviewerId;
-    }
-
-
-    public String getReviewComment() {
-        return reviewComment;
-    }
-
-    public void setReviewComment(
-            String reviewComment) {
-        this.reviewComment =
-                reviewComment;
-    }
-
-
-    public String getDecision() {
-        return decision;
-    }
-
-    public void setDecision(
-            String decision) {
-        this.decision =
-                decision;
-    }
-
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(
-            Timestamp createdAt) {
-        this.createdAt =
-                createdAt;
-    }
-
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(
-            Timestamp updatedAt) {
-        this.updatedAt =
-                updatedAt;
-    }
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 }
