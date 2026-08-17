@@ -1,0 +1,420 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.edit-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 250px;
+    background: #111827;
+    color: white;
+    padding: 25px 18px;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.logo span {
+    color: #6366f1;
+}
+
+
+/* USER */
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #374151;
+}
+
+
+.avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #6366f1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.user-section h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+
+.user-section small {
+    color: #9ca3af;
+}
+
+
+/* MENU */
+
+.menu {
+    margin-top: 25px;
+}
+
+
+.menu-item {
+    display: block;
+
+    padding: 13px;
+
+    margin-bottom: 8px;
+
+    border-radius: 8px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+}
+
+
+.menu-item:hover,
+.menu-item.active {
+    background: #6366f1;
+    color: white;
+}
+
+
+/* LOGOUT */
+
+.logout-btn {
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 18px;
+    right: 18px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* ================= MAIN ================= */
+
+.main-content {
+
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    padding: 30px;
+}
+
+
+/* ================= TOPBAR ================= */
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.topbar h1 {
+
+    margin: 0;
+
+    font-size: 30px;
+}
+
+
+.topbar p {
+
+    color: #6b7280;
+}
+
+
+/* BACK */
+
+.back-btn {
+
+    border: none;
+
+    background: #6b7280;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.back-btn:hover {
+
+    background: #4b5563;
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message {
+
+    padding: 13px 18px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+}
+
+
+.message.error {
+
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* ================= LOADING ================= */
+
+.loading {
+
+    background: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #6b7280;
+}
+
+
+/* ================= EDIT CARD ================= */
+
+.edit-card {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.08);
+
+}
+
+
+/* ================= FORM ================= */
+
+.form-group {
+
+    margin-bottom: 20px;
+}
+
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+
+input,
+textarea,
+select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+
+textarea {
+
+    resize: vertical;
+}
+
+
+/* ================= ACTIONS ================= */
+
+.actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e5e7eb;
+
+    margin-top: 25px;
+}
+
+
+.cancel-btn,
+.save-btn {
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.cancel-btn {
+
+    background: #e5e7eb;
+
+    color: #374151;
+}
+
+
+.cancel-btn:hover {
+
+    background: #d1d5db;
+}
+
+
+.save-btn {
+
+    background: #6366f1;
+
+    color: white;
+}
+
+
+.save-btn:hover {
+
+    background: #4f46e5;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        display: none;
+    }
+
+
+    .main-content {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 15px;
+    }
+
+
+    .topbar {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+    }
+
+}

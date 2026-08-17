@@ -1,0 +1,745 @@
+css
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.projects-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    width: 250px;
+    background: #111827;
+    color: white;
+    padding: 25px 18px;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.logo span {
+    color: #6366f1;
+}
+
+
+/* USER */
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #374151;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #6366f1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.user-section h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.user-section small {
+    color: #9ca3af;
+}
+
+
+/* MENU */
+
+.menu {
+    margin-top: 25px;
+}
+
+.menu-item {
+    display: block;
+
+    padding: 13px;
+
+    margin-bottom: 8px;
+
+    border-radius: 8px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background: #6366f1;
+    color: white;
+}
+
+
+/* LOGOUT */
+
+.logout-btn {
+    position: absolute;
+
+    bottom: 25px;
+    left: 18px;
+    right: 18px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content {
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    padding: 30px;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    margin: 0;
+
+    font-size: 30px;
+}
+
+.topbar p {
+    color: #6b7280;
+}
+
+
+/* CREATE BUTTON */
+
+.create-btn {
+    border: none;
+
+    background: #6366f1;
+
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.create-btn:hover {
+    background: #4f46e5;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+    padding: 13px 18px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+}
+
+.message.success {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+.message.error {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.form-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.form-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    margin: 0 0 6px 0;
+}
+
+.form-header p {
+    color: #6b7280;
+
+    margin: 0;
+}
+
+
+/* CLOSE */
+
+.close-btn {
+    border: none;
+
+    background: #f3f4f6;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+.close-btn:hover {
+    background: #e5e7eb;
+}
+
+
+/* FORM GRID */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* FORM BUTTONS */
+
+.form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+.cancel-btn,
+.save-btn {
+
+    padding: 11px 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #e5e7eb;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+}
+
+.save-btn {
+    background: #6366f1;
+
+    color: white;
+}
+
+.save-btn:hover {
+    background: #4f46e5;
+}
+
+
+/* =====================================================
+   PROJECT SECTION
+===================================================== */
+
+.projects-section {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+}
+
+
+.section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    margin: 0 0 5px 0;
+}
+
+.section-header p {
+    color: #6b7280;
+
+    margin: 0;
+}
+
+
+/* REFRESH */
+
+.refresh-btn {
+
+    border: none;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    padding: 10px 15px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.refresh-btn:hover {
+    background: #e0e7ff;
+}
+
+
+/* =====================================================
+   PROJECT GRID
+===================================================== */
+
+.projects-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   PROJECT CARD
+===================================================== */
+
+.project-card {
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    transition: 0.2s;
+
+    background: white;
+}
+
+.project-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* CARD TOP */
+
+.project-card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+/* PROJECT ICON */
+
+.project-icon {
+    font-size: 28px;
+}
+
+
+/* PROJECT NAME */
+
+.project-card h3 {
+
+    margin: 0 0 8px 0;
+
+    font-size: 20px;
+}
+
+
+/* DESCRIPTION */
+
+.description {
+
+    color: #6b7280;
+
+    min-height: 45px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.status.planning {
+
+    background: #fef3c7;
+
+    color: #92400e;
+}
+
+.status.in-progress {
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+}
+
+.status.completed {
+
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+/* =====================================================
+   PROJECT FOOTER
+===================================================== */
+
+.project-footer {
+
+    border-top: 1px solid #e5e7eb;
+
+    padding-top: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.project-footer span {
+
+    color: #6b7280;
+
+    font-size: 12px;
+}
+
+.project-footer button {
+
+    border: none;
+
+    background: #6366f1;
+
+    color: white;
+
+    padding: 7px 13px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.project-footer button:hover {
+    background: #4f46e5;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.no-projects {
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+.no-projects h3 {
+    margin-bottom: 8px;
+}
+
+.no-projects p {
+    color: #6b7280;
+}
+
+.no-projects button {
+
+    background: #6366f1;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.no-projects button:hover {
+    background: #4f46e5;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .projects-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+
+        width: 210px;
+    }
+
+    .main-content {
+
+        margin-left: 210px;
+
+        width: calc(100% - 210px);
+
+        padding: 20px;
+    }
+
+    .projects-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .sidebar {
+
+        display: none;
+    }
+
+    .main-content {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 15px;
+    }
+
+    .topbar {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+```
