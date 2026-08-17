@@ -1,0 +1,1071 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.details-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    width: 250px;
+    background: #111827;
+    color: white;
+
+    padding: 25px 18px;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+
+.logo span {
+    color: #6366f1;
+}
+
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #374151;
+}
+
+
+.avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #6366f1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.user-section h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+
+.user-section small {
+    color: #9ca3af;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+.menu {
+    margin-top: 25px;
+}
+
+
+.menu-item {
+    display: block;
+
+    padding: 13px;
+
+    margin-bottom: 8px;
+
+    border-radius: 8px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+}
+
+
+.menu-item:hover,
+.menu-item.active {
+    background: #6366f1;
+    color: white;
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+.logout-btn {
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 18px;
+    right: 18px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content {
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    padding: 30px;
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.topbar h1 {
+    margin: 0;
+
+    font-size: 30px;
+}
+
+
+.topbar p {
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-btn {
+    border: none;
+
+    background: #6366f1;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.back-btn:hover {
+    background: #4f46e5;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+    padding: 13px 18px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+}
+
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+    background: white;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   DETAILS CARD
+===================================================== */
+
+.details-card {
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   PROJECT HEADER
+===================================================== */
+
+.project-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.project-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eef2ff;
+
+    border-radius: 12px;
+
+    font-size: 35px;
+}
+
+
+.project-title {
+    flex: 1;
+}
+
+
+.project-title h2 {
+    margin: 0 0 8px 0;
+
+    font-size: 27px;
+}
+
+
+.project-title p {
+    margin: 0;
+
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.status.planning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+
+.status.in-progress {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+
+.status.completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info-section {
+    padding: 30px 0;
+}
+
+
+.info-section h3,
+.description-section h3 {
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+    font-size: 20px;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.info-box {
+    border: 1px solid #e5e7eb;
+
+    border-radius: 9px;
+
+    padding: 18px;
+
+    background: #fafafa;
+}
+
+
+.label {
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+
+.info-box strong {
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.description-section {
+    padding: 25px 0;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+.description-section p {
+    color: #4b5563;
+
+    line-height: 1.7;
+
+    margin: 0;
+
+    white-space: pre-wrap;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+.edit-btn,
+.delete-btn {
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.edit-btn {
+    background: #6366f1;
+
+    color: white;
+}
+
+
+.edit-btn:hover {
+    background: #4f46e5;
+}
+
+
+.delete-btn {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+
+/* =====================================================
+   GITHUB CARD
+===================================================== */
+
+.github-card {
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    margin-top: 25px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+.github-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+.github-header h2 {
+    margin: 0;
+}
+
+
+.github-header p {
+    color: #6b7280;
+
+    margin-top: 5px;
+}
+
+
+.github-card label {
+    display: block;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+.github-card input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    margin-bottom: 12px;
+}
+
+
+.github-card textarea,
+.github-card select {
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    margin-bottom: 12px;
+
+    font-family: inherit;
+}
+
+
+.github-card textarea {
+    resize: vertical;
+}
+
+
+.github-card button {
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #111827;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.github-card button:hover {
+    opacity: 0.9;
+}
+
+
+.github-info-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.github-actions {
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 15px;
+}
+
+
+.github-actions select {
+    width: auto;
+
+    margin-bottom: 0;
+}
+
+
+.github-actions button {
+    padding: 9px 14px;
+
+    background: #6366f1;
+}
+
+
+.github-actions .disconnect-btn {
+    background: #dc2626;
+}
+
+
+.github-actions a {
+    display: inline-block;
+
+    padding: 9px 14px;
+
+    background: #111827;
+
+    color: white;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+}
+
+
+.github-actions a:hover {
+    opacity: 0.9;
+}
+
+
+.github-message {
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+.github-message.success {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+.github-message.error {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+.github-message.info {
+    background: #e0f2fe;
+
+    color: #075985;
+}
+
+
+.github-item {
+    padding: 15px;
+
+    margin-top: 10px;
+
+    background: #f8fafc;
+
+    border-radius: 8px;
+}
+
+
+.github-item strong {
+    display: block;
+
+    margin-bottom: 6px;
+}
+
+
+.github-item p {
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+.github-item a {
+    color: #4f46e5;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   HUMAN REVIEW
+===================================================== */
+
+#humanReviewForm {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+#humanReviewForm label {
+    font-weight: bold;
+
+    margin-top: 8px;
+}
+
+
+#humanReviewForm input,
+#humanReviewForm select,
+#humanReviewForm textarea {
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+
+#humanReviewForm input:focus,
+#humanReviewForm select:focus,
+#humanReviewForm textarea:focus {
+    border-color: #6366f1;
+}
+
+
+#humanReviewForm button {
+    align-self: flex-start;
+
+    margin-top: 10px;
+
+    padding: 11px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #6366f1;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.human-review-item {
+    margin-top: 15px;
+
+    padding: 16px;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    border: 1px solid #e5e7eb;
+}
+
+
+.human-review-item > div {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.review-decision {
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.human-review-item p {
+    margin: 12px 0;
+
+    color: #4b5563;
+
+    line-height: 1.5;
+}
+
+
+.human-review-item small {
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   AI REVIEW
+===================================================== */
+
+.ai-review-panel {
+    border: 1px solid #e0e7ff;
+}
+
+
+.ai-form-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+
+#aiAnalyzeButton {
+    background: #6366f1;
+}
+
+
+#aiAnalyzeButton:hover {
+    background: #4f46e5;
+}
+
+
+.ai-secondary-btn {
+    background: #374151 !important;
+}
+
+
+.ai-review-result {
+    margin-top: 25px;
+}
+
+
+.ai-score-summary {
+    display: flex;
+
+    justify-content: center;
+
+    padding: 15px 0 25px;
+}
+
+
+.ai-score-circle {
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 6px solid #c7d2fe;
+}
+
+
+.ai-score-circle span {
+    font-size: 12px;
+
+    color: #6b7280;
+
+    margin-bottom: 6px;
+}
+
+
+.ai-score-circle strong {
+    font-size: 28px;
+}
+
+
+.ai-stat-box strong {
+    font-size: 24px;
+}
+
+
+.ai-score-bar {
+    width: 100%;
+
+    height: 20px;
+
+    background: #e5e7eb;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+.ai-score-progress {
+    width: 0%;
+
+    height: 100%;
+
+    background: #6366f1;
+
+    transition:
+        width .4s ease,
+        background .3s ease;
+}
+
+
+.ai-score-progress.score-good {
+    background: #16a34a;
+}
+
+
+.ai-score-progress.score-medium {
+    background: #f59e0b;
+}
+
+
+.ai-score-progress.score-low {
+    background: #dc2626;
+}
+
+
+.ai-pre {
+    margin: 0;
+
+    padding: 16px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #374151;
+}
+
+
+.ai-pr-button {
+    background: #7c3aed !important;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .info-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        display: none;
+    }
+
+
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 15px;
+    }
+
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .project-header {
+        flex-wrap: wrap;
+    }
+
+
+    .info-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .github-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .github-actions select,
+    .github-actions button,
+    .github-actions a {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .ai-form-actions {
+        flex-direction: column;
+    }
+
+
+    .ai-form-actions button {
+        width: 100%;
+    }
+}
