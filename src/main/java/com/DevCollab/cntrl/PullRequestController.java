@@ -19,403 +19,205 @@ import com.DevCollab.service.UserService;
 @CrossOrigin
 public class PullRequestController {
 
-    @Autowired
-    private PullRequestService pullRequestService;
+	@Autowired
+	private PullRequestService pullRequestService;
 
+	@Autowired
+	private UserService userService;
 
-    @Autowired
-    private UserService userService;
+	// =====================================================
+	// SYNC GITHUB PRs
+	// =====================================================
 
+	@PostMapping("/sync/project/{projectId}")
+	public ResponseEntity<?> syncPullRequests(@PathVariable Long projectId, Authentication authentication) {
 
-    // =====================================================
-    // SYNC GITHUB PRs
-    // =====================================================
+		try {
 
-    @PostMapping("/sync/project/{projectId}")
-    public ResponseEntity<?> syncPullRequests(
-            @PathVariable Long projectId,
-            Authentication authentication) {
+			if (!isAuthenticated(authentication)) {
 
-        try {
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+			}
 
-            if (!isAuthenticated(
-                    authentication
-            )) {
+			UserEntity user = getLoggedInUser(authentication);
 
-                return ResponseEntity
-                        .status(
-                            HttpStatus.UNAUTHORIZED
-                        )
-                        .body(
-                            "Authentication required"
-                        );
-            }
+			if (user == null) {
 
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Logged-in user not found");
+			}
 
-            UserEntity user =
-                    getLoggedInUser(
-                        authentication
-                    );
-
-
-            if (user == null) {
+			List<PullRequestEntity> result = pullRequestService.syncPullRequests(projectId, user.getUserId());
 
-                return ResponseEntity
-                        .status(
-                            HttpStatus.UNAUTHORIZED
-                        )
-                        .body(
-                            "Logged-in user not found"
-                        );
-            }
-
+			return ResponseEntity.ok(result);
 
-            List<PullRequestEntity> result =
-                    pullRequestService
-                        .syncPullRequests(
-                            projectId,
-                            user.getUserId()
-                        );
-
-
-            return ResponseEntity.ok(
-                    result
-            );
-
-        } catch (RuntimeException e) {
+		} catch (RuntimeException e) {
 
-            return ResponseEntity
-                    .badRequest()
-                    .body(
-                        e.getMessage()
-                    );
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.INTERNAL_SERVER_ERROR
-                    )
-                    .body(
-                        "Failed to sync pull requests"
-                    );
-        }
-    }
+			return ResponseEntity.badRequest().body(e.getMessage());
 
-
-    // =====================================================
-    // GET PROJECT PRs
-    // =====================================================
-
-    @GetMapping("/project/{projectId}")
-    public ResponseEntity<?> getProjectPullRequests(
-            @PathVariable Long projectId,
-            Authentication authentication) {
-
-        if (!isAuthenticated(
-                authentication
-        )) {
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.UNAUTHORIZED
-                    )
-                    .body(
-                        "Authentication required"
-                    );
-        }
-
-
-        return ResponseEntity.ok(
-                pullRequestService
-                    .getProjectPullRequests(
-                        projectId
-                    )
-        );
-    }
-
-
-    // =====================================================
-    // GET TASK PRs
-    // =====================================================
-
-    @GetMapping("/task/{taskId}")
-    public ResponseEntity<?> getTaskPullRequests(
-            @PathVariable Long taskId,
-            Authentication authentication) {
-
-        if (!isAuthenticated(
-                authentication
-        )) {
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.UNAUTHORIZED
-                    )
-                    .body(
-                        "Authentication required"
-                    );
-        }
-
-
-        return ResponseEntity.ok(
-                pullRequestService
-                    .getTaskPullRequests(
-                        taskId
-                    )
-        );
-    }
-
-
-    // =====================================================
-    // GET PR BY ID
-    // =====================================================
-
-    @GetMapping("/{pullRequestId}")
-    public ResponseEntity<?> getPullRequest(
-            @PathVariable Long pullRequestId,
-            Authentication authentication) {
-
-        if (!isAuthenticated(
-                authentication
-        )) {
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.UNAUTHORIZED
-                    )
-                    .body(
-                        "Authentication required"
-                    );
-        }
-
-
-        Optional<PullRequestEntity>
-                pr =
-                pullRequestService
-                    .getById(
-                        pullRequestId
-                    );
-
-
-        if (!pr.isPresent()) {
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.NOT_FOUND
-                    )
-                    .body(
-                        "Pull Request not found"
-                    );
-        }
-
-
-        return ResponseEntity.ok(
-                pr.get()
-        );
-    }
-
-
-    // =====================================================
-    // LINK PR TO TASK
-    // =====================================================
-
-    @PutMapping("/{pullRequestId}/task/{taskId}")
-    public ResponseEntity<?> linkTask(
-            @PathVariable Long pullRequestId,
-            @PathVariable Long taskId,
-            Authentication authentication) {
-
-        if (!isAuthenticated(
-                authentication
-        )) {
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.UNAUTHORIZED
-                    )
-                    .body(
-                        "Authentication required"
-                    );
-        }
-
-
-        PullRequestEntity updated =
-                pullRequestService.linkToTask(
-                        pullRequestId,
-                        taskId
-                );
-
-
-        if (updated == null) {
-
-            return ResponseEntity
-                    .status(
-                        HttpStatus.NOT_FOUND
-                    )
-                    .body(
-                        "Pull Request not found"
-                    );
-        }
-
-
-        return ResponseEntity.ok(
-                updated
-        );
-    }
-
-
-    // =====================================================
-    // UPDATE STATUS
-    // =====================================================
-
-    @PutMapping("/{pullRequestId}/status")
-    public ResponseEntity<?> updateStatus(
-            @PathVariable Long pullRequestId,
-            @RequestParam String status,
-            Authentication authentication) {
-
-        try {
-
-            if (!isAuthenticated(
-                    authentication
-            )) {
-
-                return ResponseEntity
-                        .status(
-                            HttpStatus.UNAUTHORIZED
-                        )
-                        .body(
-                            "Authentication required"
-                        );
-            }
-
-
-            PullRequestEntity updated =
-                    pullRequestService.updateStatus(
-                            pullRequestId,
-                            status
-                    );
+		} catch (Exception e) {
 
+			e.printStackTrace();
 
-            if (updated == null) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to sync pull requests");
+		}
+	}
 
-                return ResponseEntity
-                        .status(
-                            HttpStatus.NOT_FOUND
-                        )
-                        .body(
-                            "Pull Request not found"
-                        );
-            }
+	// =====================================================
+	// GET PROJECT PRs
+	// =====================================================
 
+	@GetMapping("/project/{projectId}")
+	public ResponseEntity<?> getProjectPullRequests(@PathVariable Long projectId, Authentication authentication) {
 
-            return ResponseEntity.ok(
-                    updated
-            );
+		if (!isAuthenticated(authentication)) {
 
-        } catch (RuntimeException e) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+		}
 
-            return ResponseEntity
-                    .badRequest()
-                    .body(
-                        e.getMessage()
-                    );
-        }
-    }
+		return ResponseEntity.ok(pullRequestService.getProjectPullRequests(projectId));
+	}
 
+	// =====================================================
+	// GET TASK PRs
+	// =====================================================
 
-    // =====================================================
-    // DELETE LOCAL RECORD
-    // =====================================================
+	@GetMapping("/task/{taskId}")
+	public ResponseEntity<?> getTaskPullRequests(@PathVariable Long taskId, Authentication authentication) {
 
-    @DeleteMapping("/{pullRequestId}")
-    public ResponseEntity<?> delete(
-            @PathVariable Long pullRequestId,
-            Authentication authentication) {
+		if (!isAuthenticated(authentication)) {
 
-        if (!isAuthenticated(
-                authentication
-        )) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+		}
 
-            return ResponseEntity
-                    .status(
-                        HttpStatus.UNAUTHORIZED
-                    )
-                    .body(
-                        "Authentication required"
-                    );
-        }
+		return ResponseEntity.ok(pullRequestService.getTaskPullRequests(taskId));
+	}
 
+	// =====================================================
+	// GET PR BY ID
+	// =====================================================
 
-        boolean deleted =
-                pullRequestService.delete(
-                    pullRequestId
-                );
+	@GetMapping("/{pullRequestId}")
+	public ResponseEntity<?> getPullRequest(@PathVariable Long pullRequestId, Authentication authentication) {
 
+		if (!isAuthenticated(authentication)) {
 
-        if (!deleted) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+		}
 
-            return ResponseEntity
-                    .status(
-                        HttpStatus.NOT_FOUND
-                    )
-                    .body(
-                        "Pull Request not found"
-                    );
-        }
+		Optional<PullRequestEntity> pr = pullRequestService.getById(pullRequestId);
 
+		if (!pr.isPresent()) {
 
-        return ResponseEntity.ok(
-                "Pull Request record deleted"
-        );
-    }
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pull Request not found");
+		}
 
+		return ResponseEntity.ok(pr.get());
+	}
 
-    // =====================================================
-    // AUTH
-    // =====================================================
+	// =====================================================
+	// LINK PR TO TASK
+	// =====================================================
 
-    private boolean isAuthenticated(
-            Authentication authentication) {
+	@PutMapping("/{pullRequestId}/task/{taskId}")
+	public ResponseEntity<?> linkTask(@PathVariable Long pullRequestId, @PathVariable Long taskId,
+			Authentication authentication) {
 
-        return authentication != null &&
-               authentication.isAuthenticated();
-    }
+		if (!isAuthenticated(authentication)) {
 
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+		}
 
-    // =====================================================
-    // USER
-    // =====================================================
+		PullRequestEntity updated = pullRequestService.linkToTask(pullRequestId, taskId);
 
-    private UserEntity getLoggedInUser(
-            Authentication authentication) {
+		if (updated == null) {
 
-        if (authentication == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pull Request not found");
+		}
 
-            return null;
-        }
+		return ResponseEntity.ok(updated);
+	}
 
+	// =====================================================
+	// UPDATE STATUS
+	// =====================================================
 
-        String email =
-                authentication.getName();
+	@PutMapping("/{pullRequestId}/status")
+	public ResponseEntity<?> updateStatus(@PathVariable Long pullRequestId, @RequestParam String status,
+			Authentication authentication) {
 
+		try {
 
-        List<UserEntity> users =
-                userService.getByUserEmail(
-                    email
-                );
+			if (!isAuthenticated(authentication)) {
 
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+			}
 
-        if (users == null ||
-            users.isEmpty()) {
+			PullRequestEntity updated = pullRequestService.updateStatus(pullRequestId, status);
 
-            return null;
-        }
+			if (updated == null) {
 
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pull Request not found");
+			}
 
-        return users.get(0);
-    }
+			return ResponseEntity.ok(updated);
+
+		} catch (RuntimeException e) {
+
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+
+	// =====================================================
+	// DELETE LOCAL RECORD
+	// =====================================================
+
+	@DeleteMapping("/{pullRequestId}")
+	public ResponseEntity<?> delete(@PathVariable Long pullRequestId, Authentication authentication) {
+
+		if (!isAuthenticated(authentication)) {
+
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication required");
+		}
+
+		boolean deleted = pullRequestService.delete(pullRequestId);
+
+		if (!deleted) {
+
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pull Request not found");
+		}
+
+		return ResponseEntity.ok("Pull Request record deleted");
+	}
+
+	// =====================================================
+	// AUTH
+	// =====================================================
+
+	private boolean isAuthenticated(Authentication authentication) {
+
+		return authentication != null && authentication.isAuthenticated();
+	}
+
+	// =====================================================
+	// USER
+	// =====================================================
+
+	private UserEntity getLoggedInUser(Authentication authentication) {
+
+		if (authentication == null) {
+
+			return null;
+		}
+
+		String email = authentication.getName();
+
+		List<UserEntity> users = userService.getByUserEmail(email);
+
+		if (users == null || users.isEmpty()) {
+
+			return null;
+		}
+
+		return users.get(0);
+	}
 }
