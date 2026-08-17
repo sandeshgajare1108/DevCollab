@@ -1,0 +1,54 @@
+import java.awt.*;
+import java.awt.event.*;
+class AwtDemo extends Frame
+{
+	AwtDemo()
+	{
+	Button b=new Button("Click on");
+	b.setBounds(100,100,100,50);
+	add(b);
+	
+	Label l=new Label("Enter");
+	l.setBounds(210,100,100,50);
+	add(l);
+	
+	TextField t=new TextField("Enter Text");
+	t.setBounds(320,100,100,50);
+        add(t);
+	
+	
+        Checkbox cb=new Checkbox("Male");
+	cb.setBounds(430,100,100,50);
+	add(cb);
+	
+	 Checkbox cb3=new Checkbox("Female");
+	cb3.setBounds(540,100,100,50);
+	add(cb3);
+	
+	CheckboxGroup cbg=new CheckboxGroup();
+
+	Checkbox cb1=new Checkbox("Male",cbg,true);
+	
+	Checkbox cb2=new Checkbox("Female",cbg,false);
+	cb1.setBounds(650,100,100,50);
+	add(cb1);
+	cb2.setBounds(650,160,100,50);
+	add(cb2);
+	
+	addWindowListener(new WindowAdapter()
+	{
+	public void windowClosing(WindowEvent e)
+	{
+	dispose();
+	}
+	});
+
+	}
+	public static void main(String args[])
+	{
+	AwtDemo d=new AwtDemo();
+	d.setSize(900,500);
+	d.setLayout(null);
+	d.setVisible(true);
+	}	
+}
